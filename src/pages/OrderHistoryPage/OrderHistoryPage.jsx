@@ -6,18 +6,19 @@ import Logo from '../../components/Logo/Logo';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import OrderList from '../../components/OrderList/OrderList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function OrderHistoryPage({ user, setUser }) {
   const [activeOrder, setActiveOrder] = useState('');
-  const [orderItems, setOrderItems] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   useEffect(function() {
     async function getOrders() {
-      const orders = await ordersAPI.getAllOrders();
-      setOrderItems(orders);
-      setActiveOrder(orders[0]);
+      const allOrders = await ordersAPI.getAllOrders();
+      setOrders(allOrders);
+      setActiveOrder(allOrders[0]);
     }
+    getOrders()
   }, []);
 
   // useEffect(function() {
@@ -47,8 +48,12 @@ export default function OrderHistoryPage({ user, setUser }) {
       <OrderList
         activeOrder={activeOrder}
         setActiveOrder={setActiveOrder}
+        orders={orders}
       />
-      <OrderDetail />
+      <OrderDetail 
+        order={activeOrder}
+      />
+  
 
     </main>
   );
