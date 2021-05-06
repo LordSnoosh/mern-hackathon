@@ -6,7 +6,13 @@ module.exports = {
   addToCart,
   setItemQtyInCart,
   checkout,
+  orders,
 };
+
+async function orders(req, res) {
+  const orders = await Order.getOrders(req.user._id);
+  res.json(orders);
+}
 
 async function cart(req, res) {
   // A cart is the unpaid order for a user
