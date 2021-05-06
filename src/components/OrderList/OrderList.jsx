@@ -1,7 +1,7 @@
 // import './OrderList.css';
 import OrderListItem from '../OrderLIstItem/OrderListItem';
 
-export default function OrderList({ orders, activeOrder, handleSelectOrder }) {
+export default function OrderList({ activeOrder, setActiveOrder }) {
   // const orderItems = orders.map(ord =>
   //   <OrderListItem
   //     order={ord}

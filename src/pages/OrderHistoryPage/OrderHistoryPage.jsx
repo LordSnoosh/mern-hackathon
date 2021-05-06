@@ -5,8 +5,10 @@ import Logo from '../../components/Logo/Logo';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import OrderList from '../../components/OrderList/OrderList';
+import { useState } from 'react';
 
 export default function OrderHistoryPage({ user, setUser }) {
+  const [activeOrder, setActiveOrder] = useState('');
 
 
   return (
@@ -16,7 +18,10 @@ export default function OrderHistoryPage({ user, setUser }) {
         <Link to="/orders/new" className="button btn-sm">NEW ORDER</Link>
         <UserLogOut user={user} setUser={setUser} />
       </aside>
-      <OrderList />
+      <OrderList
+        activeOrder={activeOrder}
+        setActiveOrder={setActiveOrder}
+      />
       <OrderDetail />
 
     </main>
