@@ -9,7 +9,7 @@ export default function OrderListItem({ order, handleSelectOrder, isSelected }) 
       </div>
       <div>
         <span>{order.price}</span>
-        <span>{order.qty} Items</span>
+        <span>{order.totalQty} Items</span>
       </div>
     </div>
   );
